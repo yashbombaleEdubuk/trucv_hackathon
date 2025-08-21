@@ -44,7 +44,7 @@ export const cvData = {
         awarding_organization: "edubuk demo organization",
         date_of_achievement: "Aug 05 2025",
         description:
-          "A brief description of the award or achievement and its significance.",
+          "got this award for doing good work in company. it was very nice experiance and i learned alot of things. the organization was happy with my performence and they give me this award which make me feel proud.",
         _id: "68a4736ec6db74c1ebd77ccf",
       },
       {
@@ -52,7 +52,7 @@ export const cvData = {
         awarding_organization: "award2 organization",
         date_of_achievement: "Aug 07 2025",
         description:
-          "A brief description of the award or achievement and its significance.",
+          "recieved award 2 from organization because of hardwork and dedication. this award means alot to me and my family. i was working very hard for this and finaly got it. very greatful for this oppurtunity.",
         _id: "68a4736ec6db74c1ebd77cd0",
       },
     ],
@@ -65,7 +65,7 @@ export const cvData = {
         course_name: "course 1",
         organization: "sfdgdsgdsg",
         description:
-          "A brief description of the award or achievement and its significance.",
+          "completed course 1 from organization. it was ok course nothing special. learned some basic things but not much usefull for job. duration was short so couldnt learn much in depth. overall experiance was average only.",
         _id: "68a4736ec6db74c1ebd77cd1",
       },
     ],
@@ -78,7 +78,7 @@ export const cvData = {
         project_name: "project1",
         project_url: "project1.com",
         description:
-          "A brief description of the award or achievement and its significance.",
+          "made project1 using some technologies. it took long time to complete and faced many issues. project is working fine now but code is not very clean. learned few things while making this project but could have done better if had more time.",
         _id: "68a4736ec6db74c1ebd77cd2",
       },
     ],
