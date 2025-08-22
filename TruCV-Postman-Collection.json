@@ -1,0 +1,59 @@
+{
+  "info": {
+    "name": "TruCV Hackathon APIs",
+    "description": "API collection for testing CV refinement system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Original CV Data",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/cv-original",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "cv-original"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Refine CV Descriptions",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/refine-cv",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "refine-cv"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

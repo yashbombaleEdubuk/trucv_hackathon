@@ -8,8 +8,15 @@ class CVRefinementService {
     if (!process.env.GEMINI_API_KEY) {
       throw new Error("GEMINI_API_KEY is not set in environment variables");
     }
+    console.log(`🔑 API Key configured: ${process.env.GEMINI_API_KEY.substring(0, 10)}...`);
     this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    this.model = this.genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    
+    // Configure model with system instruction
+    this.model = this.genAI.getGenerativeModel({ 
+      model: "gemini-1.5-flash",
+      systemInstruction: "***Important Instruction:** Do not add any new information or additional details to the user-provided description. Only improve the given description by making it ATS-friendly, enhancing clarity, grammar, structure, and formatting. The final output must strictly use only the information provided by the user without inventing or assuming new details."
+    });
+    console.log(`🤖 Using model: gemini-1.5-flash with system instruction`);
   }
 
   // Extract all descriptions from CV data
@@ -92,9 +99,8 @@ class CVRefinementService {
 1. ATS-friendly with relevant keywords
 2. Grammatically perfect and professionally written
 3. Impactful and achievement-focused
-4. Quantified where possible (use realistic numbers if none provided)
-5. Action-oriented with strong verbs
-6. Concise but comprehensive
+4. Action-oriented with strong verbs
+5. Concise but comprehensive
 
 Context: ${description.context}
 Section Type: ${description.type}
@@ -166,6 +172,7 @@ Please provide ONLY the refined description without any additional text or expla
         // Add small delay to avoid rate limiting
         await new Promise(resolve => setTimeout(resolve, 500));
       }
+      let updatedCvData = cvData;
 
       console.log("✅ All descriptions refined successfully");
       console.log("🔄 Applying refined descriptions to CV data...");
