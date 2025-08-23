@@ -55,26 +55,11 @@ app.post("/api/compare-descriptions", async (req, res) => {
     const result = await refinementService.refineCV(cvData);
     
     if (result.success) {
-      const comparisons = [];
-      const originalDescriptions = refinementService.extractDescriptions(cvData);
-      const refinedDescriptions = refinementService.extractDescriptions(result.refinedCvData);
-      
-      originalDescriptions.forEach((orig, index) => {
-        comparisons.push({
-          type: orig.type,
-          context: orig.context,
-          original: orig.original,
-          refined: refinedDescriptions[index].original,
-          improvement: {
-            lengthChange: refinedDescriptions[index].original.length - orig.original.length,
-            improved: refinedDescriptions[index].original !== orig.original
-          }
-        });
-      });
-      
       res.json({
-        message: "Description comparison",
-        comparisons: comparisons
+        message: "Description comparison completed",
+        originalDescriptionsCount: result.originalDescriptionsCount,
+        comparisons: result.comparisons,
+        refinementDetails: result.refinementDetails
       });
     } else {
       res.status(500).json({ error: result.error });
@@ -87,7 +72,8 @@ app.post("/api/compare-descriptions", async (req, res) => {
 app.listen(8000, () => {
   console.log("Server started on port 8000");
   console.log("Available endpoints:");
-  console.log("  GET  /                - Health check + CV data");
-  console.log("  GET  /api/cv-original - Original CV data");
-  console.log("  POST /api/refine-cv   - Refine CV descriptions with Gemini AI");
+  console.log("  GET  /                      - Health check + CV data");
+  console.log("  GET  /api/cv-original       - Original CV data");
+  console.log("  POST /api/refine-cv         - Refine CV descriptions with Gemini AI");
+  console.log("  POST /api/compare-descriptions - Compare original vs refined descriptions");
 });
